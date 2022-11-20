@@ -29,6 +29,7 @@ public class PostService {
         return postRepository.findByUserId(user_id);
     }
 
+    // 포스트 업로드
     public Post postPost(PostDto postDto) {
 
         Post post = Post.builder()
@@ -45,6 +46,7 @@ public class PostService {
         return postRepository.save(post);
     }
 
+    // 포스트 업데이트
     public Optional<Post> updatePost(int post_id, UpdateDto updateDto) {
         Optional<Post> post = postRepository.findById(post_id);
         post.ifPresent(selectedPost -> {
@@ -55,7 +57,13 @@ public class PostService {
         return post;
     }
 
+    // 포스트 수정
     public void deletePost(int post_id) {
         postRepository.deleteById(post_id);
     }
+
+//    public Page<Post> search(String text, Pageable pageable) {
+//        Page<Post> postsList = postRepository.findByText(text, pageable);
+//        return postsList;
+//    }
 }
